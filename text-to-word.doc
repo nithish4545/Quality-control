@@ -1,0 +1,92 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Text To Word</title></head><body><p>&lt;!DOCTYPE html&gt;</p>
+<p>&lt;html lang="en"&gt;</p>
+<p>&lt;head&gt;</p>
+<p>&nbsp; &lt;meta charset="UTF-8"&gt;</p>
+<p>&nbsp; &lt;title&gt;Quality Control - Manufacturing&lt;/title&gt;</p>
+<p>&nbsp; &lt;style&gt;</p>
+<p>&nbsp; &nbsp; body {</p>
+<p>&nbsp; &nbsp; &nbsp; font-family: Arial, sans-serif;</p>
+<p>&nbsp; &nbsp; &nbsp; margin: 40px;</p>
+<p>&nbsp; &nbsp; }</p>
+<p>&nbsp; &nbsp; label, input, textarea {</p>
+<p>&nbsp; &nbsp; &nbsp; display: block;</p>
+<p>&nbsp; &nbsp; &nbsp; margin-bottom: 10px;</p>
+<p>&nbsp; &nbsp; &nbsp; width: 300px;</p>
+<p>&nbsp; &nbsp; }</p>
+<p>&nbsp; &nbsp; table {</p>
+<p>&nbsp; &nbsp; &nbsp; margin-top: 20px;</p>
+<p>&nbsp; &nbsp; &nbsp; border-collapse: collapse;</p>
+<p>&nbsp; &nbsp; &nbsp; width: 80%;</p>
+<p>&nbsp; &nbsp; }</p>
+<p>&nbsp; &nbsp; th, td {</p>
+<p>&nbsp; &nbsp; &nbsp; padding: 8px 12px;</p>
+<p>&nbsp; &nbsp; &nbsp; border: 1px solid #ccc;</p>
+<p>&nbsp; &nbsp; }</p>
+<p>&nbsp; &nbsp; th {</p>
+<p>&nbsp; &nbsp; &nbsp; background-color: #f4f4f4;</p>
+<p>&nbsp; &nbsp; }</p>
+<p>&nbsp; &nbsp; .success {</p>
+<p>&nbsp; &nbsp; &nbsp; color: green;</p>
+<p>&nbsp; &nbsp; }</p>
+<p>&nbsp; &lt;/style&gt;</p>
+<p>&lt;/head&gt;</p>
+<p>&lt;body&gt;</p>
+<p>&nbsp;</p>
+<p>&nbsp; &lt;h1&gt;Quality Control Log&lt;/h1&gt;</p>
+<p>&nbsp;</p>
+<p>&nbsp; &lt;form id="qcForm"&gt;</p>
+<p>&nbsp; &nbsp; &lt;label&gt;Product ID:</p>
+<p>&nbsp; &nbsp; &nbsp; &lt;input type="text" id="productId" required&gt;</p>
+<p>&nbsp; &nbsp; &lt;/label&gt;</p>
+<p>&nbsp; &nbsp; &lt;label&gt;Inspector Name:</p>
+<p>&nbsp; &nbsp; &nbsp; &lt;input type="text" id="inspector" required&gt;</p>
+<p>&nbsp; &nbsp; &lt;/label&gt;</p>
+<p>&nbsp; &nbsp; &lt;label&gt;Defect Description:</p>
+<p>&nbsp; &nbsp; &nbsp; &lt;textarea id="defect" required&gt;&lt;/textarea&gt;</p>
+<p>&nbsp; &nbsp; &lt;/label&gt;</p>
+<p>&nbsp; &nbsp; &lt;button type="submit"&gt;Log Defect&lt;/button&gt;</p>
+<p>&nbsp; &lt;/form&gt;</p>
+<p>&nbsp;</p>
+<p>&nbsp; &lt;p class="success" id="successMsg"&gt;&lt;/p&gt;</p>
+<p>&nbsp;</p>
+<p>&nbsp; &lt;table id="defectTable"&gt;</p>
+<p>&nbsp; &nbsp; &lt;thead&gt;</p>
+<p>&nbsp; &nbsp; &nbsp; &lt;tr&gt;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;Timestamp&lt;/th&gt;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;Product ID&lt;/th&gt;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;Inspector&lt;/th&gt;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;th&gt;Defect&lt;/th&gt;</p>
+<p>&nbsp; &nbsp; &nbsp; &lt;/tr&gt;</p>
+<p>&nbsp; &nbsp; &lt;/thead&gt;</p>
+<p>&nbsp; &nbsp; &lt;tbody&gt;&lt;/tbody&gt;</p>
+<p>&nbsp; &lt;/table&gt;</p>
+<p>&nbsp;</p>
+<p>&nbsp; &lt;script&gt;</p>
+<p>&nbsp; &nbsp; const form = document.getElementById('qcForm');</p>
+<p>&nbsp; &nbsp; const tableBody = document.querySelector('#defectTable tbody');</p>
+<p>&nbsp; &nbsp; const successMsg = document.getElementById('successMsg');</p>
+<p>&nbsp;</p>
+<p>&nbsp; &nbsp; form.addEventListener('submit', function (e) {</p>
+<p>&nbsp; &nbsp; &nbsp; e.preventDefault();</p>
+<p>&nbsp; &nbsp; &nbsp; const productId = document.getElementById('productId').value.trim();</p>
+<p>&nbsp; &nbsp; &nbsp; const inspector = document.getElementById('inspector').value.trim();</p>
+<p>&nbsp; &nbsp; &nbsp; const defect = document.getElementById('defect').value.trim();</p>
+<p>&nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; if (!productId || !inspector || !defect) return;</p>
+<p>&nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; const now = new Date().toLocaleString();</p>
+<p>&nbsp; &nbsp; &nbsp; const row = tableBody.insertRow();</p>
+<p>&nbsp; &nbsp; &nbsp; row.insertCell(0).textContent = now;</p>
+<p>&nbsp; &nbsp; &nbsp; row.insertCell(1).textContent = productId;</p>
+<p>&nbsp; &nbsp; &nbsp; row.insertCell(2).textContent = inspector;</p>
+<p>&nbsp; &nbsp; &nbsp; row.insertCell(3).textContent = defect;</p>
+<p>&nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; successMsg.textContent = "Defect logged successfully.";</p>
+<p>&nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; form.reset();</p>
+<p>&nbsp; &nbsp; &nbsp; setTimeout(() =&gt; successMsg.textContent = '', 3000);</p>
+<p>&nbsp; &nbsp; });</p>
+<p>&nbsp; &lt;/script&gt;</p>
+<p>&nbsp;</p>
+<p>&lt;/body&gt;</p>
+<p>&lt;/html&gt;</p></body></html>
